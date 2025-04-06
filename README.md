@@ -22,6 +22,44 @@ Install the dependencies:
 bun install
 ```
 
+### Setup Database with Docker
+
+To set up the database, you can use Docker. Make sure you have Docker installed and running.
+
+Setup .env file
+
+```bash
+cp .env.example .env
+```
+
+```sh
+POSTGRES_USER="jobsboard_user"
+POSTGRES_PASSWORD="jobsboard_password"
+POSTGRES_DB="jobsboard_db"
+
+DATABASE_URL="postgresql://jobsboard_user:jobsboard_password@localhost:5432/jobsboard_db"
+```
+
+Then, run the following command to start the database:
+
+```bash
+docker compose up -d
+```
+
+### Migrate Database
+
+Run the following command to create the database tables:
+
+```bash
+bun prisma migrate dev
+```
+
+Add some initial data through Prisma Studio:
+
+```bash
+bun prisma studio
+```
+
 ### Development
 
 Start the development server with HMR:
