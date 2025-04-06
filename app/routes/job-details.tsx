@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Form, Link } from "react-router";
 import { prisma } from "~/lib/prisma";
 import type { Route } from "./+types/job-details";
 
@@ -26,12 +26,20 @@ export default function JobDetails({ loaderData }: Route.ComponentProps) {
 
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">
-      <Link
-        to="/"
-        className="inline-block mb-6 text-blue-400 hover:text-blue-300"
-      >
-        ← Back to Jobs
-      </Link>
+      <div>
+        <Link
+          to="/"
+          className="inline-block mb-6 text-blue-400 hover:text-blue-300"
+        >
+          ← Back to Jobs
+        </Link>
+
+        <Form method="POST" action={`/jobs/${job.id}/delete`}>
+          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            Delete
+          </button>
+        </Form>
+      </div>
 
       <article className="bg-gray-800 rounded-lg shadow-lg p-6">
         <header className="mb-6">
