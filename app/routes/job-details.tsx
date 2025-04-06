@@ -34,11 +34,20 @@ export default function JobDetails({ loaderData }: Route.ComponentProps) {
           ← Back to Jobs
         </Link>
 
-        <Form method="POST" action={`/jobs/${job.id}/delete`}>
-          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-            Delete
-          </button>
-        </Form>
+        <div className="flex gap-4">
+          <Link
+            to={`/jobs/${job.id}/edit`}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Edit
+          </Link>
+
+          <Form method="POST" action={`/jobs/${job.id}/delete`}>
+            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+              Delete
+            </button>
+          </Form>
+        </div>
       </div>
 
       <article className="bg-gray-800 rounded-lg shadow-lg p-6">
